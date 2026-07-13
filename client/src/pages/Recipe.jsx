@@ -1,30 +1,51 @@
 import { useEffect, useState } from "react";
 import "./Recipe.css";
+import api from "../services/api";
 
 function Recipe() {
   const [recipe, setRecipe] = useState(null);
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    const data = localStorage.getItem("recipe");
+  const data = localStorage.getItem("recipe");
 
-    if (data) {
-      let text = JSON.parse(data);
+  if (!data) return;
 
-      // Remove markdown if AI returns ```json
-      text = text.replace(/```json/g, "");
-      text = text.replace(/```/g, "");
+  const parsed = JSON.parse(data);
 
-      const json = JSON.parse(text);
+  // If recipe came from AI (string)
+  if (typeof parsed === "string") {
+    let text = parsed
+      .replace(/```json/g, "")
+      .replace(/```/g, "");
 
-      setRecipe(json);
-      const img = localStorage.getItem("uploadedImage");
+    setRecipe(JSON.parse(text));
+  }
+  // If recipe came from MongoDB (object)
+  else {
+    setRecipe(parsed);
+  }
 
-      if (img) {
-        setImage(img);
-      }
+  const img = localStorage.getItem("recipeImage");
+
+  if (img) {
+    setImage(img);
+  }
+}, []);
+  const handleSaveRecipe = async () => {
+    try {
+      await api.post("/recipe/save", {
+        ...recipe,
+        image: localStorage.getItem("recipeImage"),
+      });
+
+      alert("✅ Recipe Saved Successfully");
+    } catch (error) {
+      console.log(error);
+
+      alert("❌ Failed to Save Recipe");
     }
-  }, []);
+  };
 
   if (!recipe) {
     return <h2 style={{ textAlign: "center" }}>Loading...</h2>;
@@ -36,10 +57,10 @@ function Recipe() {
       <div className="recipe-details-card">
 
         <img
-  src={image}
-  alt="Food"
-  className="recipe-image"
-/>
+          src={image}
+          alt="Food"
+          className="recipe-image"
+        />
 
         <h1>{recipe.name}</h1>
 
@@ -59,7 +80,7 @@ function Recipe() {
 
           {recipe.ingredients.map((item, index) => (
 
-            <li key={index}>{item}</li>
+            <li key={index}>🥕 {item}</li>
 
           ))}
 
@@ -71,13 +92,16 @@ function Recipe() {
 
           {recipe.steps.map((step, index) => (
 
-            <li key={index}>{step}</li>
+            <li key={index}>🍳 {step}</li>
 
           ))}
 
         </ol>
 
-        <button className="save-btn">
+        <button
+          className="save-btn"
+          onClick={handleSaveRecipe}
+        >
           ❤️ Save Recipe
         </button>
 

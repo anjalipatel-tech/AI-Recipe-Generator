@@ -1,12 +1,9 @@
 const express = require("express");
 const multer = require("multer");
-
 const {
-  getRecipe,
-  saveRecipe,
-  getAllRecipes,
-  deleteRecipe,
-} = require("../controllers/recipeController");
+  uploadRecipe,
+  getUploadedRecipes,
+} = require("../controllers/uploadRecipeController");
 
 const router = express.Router();
 
@@ -22,16 +19,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Generate Recipe
-router.post("/", upload.single("image"), getRecipe);
-
-// Save Recipe
-router.post("/save", saveRecipe);
-
-// Get All Recipes
-router.get("/all", getAllRecipes);
-
-// Delete Recipe
-router.delete("/:id", deleteRecipe);
+// Upload Recipe
+router.post("/", upload.single("image"), uploadRecipe);
+router.get("/all", getUploadedRecipes);
 
 module.exports = router;

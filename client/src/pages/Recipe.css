@@ -38,20 +38,43 @@ font-weight:bold;
 }
 
 .recipe-details-card h2{
-margin-top:25px;
-margin-bottom:15px;
+margin-top:35px;
+margin-bottom:20px;
 color:#ff6b35;
+font-size:30px;
+}
+.recipe-details-card ul{
+list-style:none;
+padding:0;
 }
 
 .recipe-details-card ul li{
-margin:10px 0;
+background:#fff7f2;
+margin:12px 0;
+padding:15px 18px;
+border-left:6px solid #ff6b35;
+border-radius:12px;
 font-size:18px;
+transition:.3s;
+}
+
+.recipe-details-card ul li:hover{
+transform:translateX(8px);
+background:#ffe9df;
+}
+
+.recipe-details-card ol{
+padding-left:25px;
 }
 
 .recipe-details-card ol li{
-margin:12px 0;
-line-height:1.7;
+background:white;
+margin:18px 0;
+padding:18px;
+border-radius:15px;
+line-height:1.8;
 font-size:18px;
+box-shadow:0 5px 12px rgba(0,0,0,.08);
 }
 
 .save-btn{

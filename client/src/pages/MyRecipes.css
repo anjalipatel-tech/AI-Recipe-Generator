@@ -1,0 +1,73 @@
+.my-recipes-page {
+  min-height: 100vh;
+  padding: 60px 8%;
+  background: #fff7f2;
+}
+
+.my-recipes-page h1 {
+  text-align: center;
+  font-size: 42px;
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.recipe-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.recipe-card:hover {
+  transform: translateY(-8px);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+}
+
+.recipe-card h2 {
+  padding: 15px 20px 5px;
+  color: #333;
+}
+
+.recipe-card p {
+  padding: 0 20px;
+  margin: 8px 0;
+  color: #666;
+  font-size: 17px;
+}
+
+.recipe-card button {
+  width: calc(100% - 40px);
+  margin: 12px 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #ff6b35;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.recipe-card button:hover {
+  background: #ff4b14;
+}
+
+.delete-btn {
+  background: #dc3545 !important;
+}
+
+.delete-btn:hover {
+  background: #b02a37 !important;
+}

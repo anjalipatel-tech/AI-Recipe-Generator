@@ -4,47 +4,58 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 function UploadBox() {
-const [image, setImage] = useState(null);
-const [selectedFile, setSelectedFile] = useState(null);  const navigate = useNavigate();
+  const [image, setImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null); const navigate = useNavigate();
 
   const handleImage = (e) => {
-  const file = e.target.files[0];
+    const file = e.target.files[0];
 
-  if (file) {
+    if (!file) return;
+
     setSelectedFile(file);
-    const imageURL = URL.createObjectURL(file);
 
-setImage(imageURL);
+    const reader = new FileReader();
 
-localStorage.setItem("uploadedImage", imageURL);
-  }
-};
+    reader.onloadend = () => {
+      setImage(reader.result);
+
+      // Save Base64 image
+      localStorage.setItem("uploadedImage", reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
   const handleGenerateRecipe = async () => {
-  if (!selectedFile) {
-    alert("Please select an image");
-    return;
-  }
+    if (!selectedFile) {
+      alert("Please select an image");
+      return;
+    }
 
-  const formData = new FormData();
-  formData.append("image", selectedFile);
+    const formData = new FormData();
+    formData.append("image", selectedFile);
 
-  try {
-    const response = await api.post("/recipe", formData);
+    try {
+      const response = await api.post("/recipe", formData);
 
-    console.log(response.data);
+      console.log(response.data);
 
-    localStorage.setItem(
-      "recipe",
-      JSON.stringify(response.data.recipe)
-    );
+      localStorage.setItem(
+        "recipe",
+        JSON.stringify(response.data.recipe)
+      );
 
-    navigate("/recipe");
+      localStorage.setItem(
+        "recipeImage",
+        response.data.image
+      );
 
-  } catch (error) {
-    console.error(error);
-    alert("Recipe Generation Failed");
-  }
-};
+      navigate("/recipe");
+
+    } catch (error) {
+      console.error(error);
+      alert("Recipe Generation Failed");
+    }
+  };
 
   return (
     <section className="upload-section">

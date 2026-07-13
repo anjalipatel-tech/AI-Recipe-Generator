@@ -1,8 +1,10 @@
 import { FaUtensils } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <nav className="navbar">
+
       {/* Logo */}
       <div className="logo">
         <FaUtensils />
@@ -11,15 +13,38 @@ function Navbar() {
 
       {/* Navigation Links */}
       <ul className="nav-links">
-        <li>Home</li>
-        <li>Upload</li>
-        <li>Recipes</li>
-        <li>About</li>
-        <li>Contact</li>
+
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+
+        <li>
+          <a href="#upload">Upload</a>
+        </li>
+
+        <li>
+          <a href="#recipes">Recipes</a>
+        </li>
+
+        <li>
+          <Link to="/myrecipes">My Recipes</Link>
+        </li>
+
+        <li>
+          <a href="#about">About</a>
+        </li>
+
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+
       </ul>
 
       {/* Login Button */}
-      <button className="login-btn">Login</button>
+      <button className="login-btn">
+        Login
+      </button>
+
     </nav>
   );
 }
