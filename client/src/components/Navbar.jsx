@@ -1,13 +1,23 @@
-import { FaUtensils } from "react-icons/fa";
 import {
   HiOutlineHome,
   HiOutlineInformationCircle,
   HiOutlinePhone,
 } from "react-icons/hi2";
-import { LuBookHeart } from "react-icons/lu";
-import { Link } from "react-router-dom";
+import { FaUtensils } from "react-icons/fa";
+import { LuBookHeart, LuLogOut } from "react-icons/lu";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <nav className="navbar">
 
@@ -50,9 +60,39 @@ function Navbar() {
 
       </ul>
 
-      <button className="login-btn">
-        Login
-      </button>
+      {/* Login / Logout */}
+      {user ? (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "15px",
+          }}
+        >
+          <span
+            style={{
+              fontWeight: "600",
+              color: "#ff6b35",
+            }}
+          >
+            👤 {user.name}
+          </span>
+
+          <button
+            className="login-btn"
+            onClick={handleLogout}
+          >
+            <LuLogOut />
+            Logout
+          </button>
+        </div>
+      ) : (
+        <Link to="/login">
+          <button className="login-btn">
+            Login
+          </button>
+        </Link>
+      )}
 
     </nav>
   );
