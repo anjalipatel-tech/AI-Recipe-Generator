@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "./Recipe.css";
 import api from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function Recipe() {
   const [recipe, setRecipe] = useState(null);
   const [image, setImage] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
   const data = localStorage.getItem("recipe");
