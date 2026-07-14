@@ -20,6 +20,19 @@ function Hero() {
 
   return (
     <section className="hero">
+
+  {/* Background Blur Video */}
+  <video
+    className="hero-bg-video"
+    autoPlay
+    loop
+    muted
+    playsInline
+  >
+    <source src={heroVideo} type="video/mp4" />
+  </video>
+
+  <div className="hero-overlay"></div>
       <div className="hero-content">
         <h1>
   Turn Your <span>Food Image</span>
