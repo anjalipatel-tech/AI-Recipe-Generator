@@ -7,7 +7,7 @@ import {
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="about">
 
       <div className="footer-container">
 
@@ -36,7 +36,7 @@ function Footer() {
         </div>
 
         {/* Contact */}
-        <div className="footer-contact">
+        <div className="footer-contact" id="contact">
           <h3>Contact</h3>
 
           <p>Email : support@recipeai.com</p>

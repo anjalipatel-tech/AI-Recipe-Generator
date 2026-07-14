@@ -17,6 +17,7 @@ function UploadRecipe() {
     const [steps, setSteps] = useState([""]);
 
     const [recipes, setRecipes] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchUploadedRecipes();
@@ -106,20 +107,34 @@ function UploadRecipe() {
                     },
                 }
             );
-
             if (response.data.success) {
-  alert("✅ Recipe Published Successfully");
+                alert("✅ Recipe Published Successfully");
 
-  fetchUploadedRecipes();
+                fetchUploadedRecipes();
 
-  navigate("/upload-recipe");
-}
+                setImage(null);
+                setSelectedFile(null);
+
+                setName("");
+                setTime("");
+                setCalories("");
+                setDifficulty("Easy");
+
+                setIngredients([""]);
+                setSteps([""]);
+            }
 
         } catch (error) {
             console.log(error);
 
             alert("❌ Failed to Publish Recipe");
         }
+    };
+    const handleViewRecipe = (recipe) => {
+        localStorage.setItem("recipe", JSON.stringify(recipe));
+        localStorage.setItem("recipeImage", recipe.image);
+
+        navigate("/recipe");
     };
 
     return (
@@ -199,16 +214,19 @@ function UploadRecipe() {
 
                 {/* Difficulty */}
 
-                {/* <div className="form-group">
-
+                <div className="form-group">
                     <label>Difficulty</label>
 
                     <select
                         value={difficulty}
                         onChange={(e) => setDifficulty(e.target.value)}
-                    />
+                    >
+                        <option value="Easy">Easy</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+                </div>
 
-                </div> */}
                 {/* Ingredients */}
 
                 <div className="form-group">
@@ -324,7 +342,10 @@ function UploadRecipe() {
 
                                 <p>🔥 {recipe.calories}</p>
 
-                                <button className="view-btn">
+                                <button
+                                    className="view-btn"
+                                    onClick={() => handleViewRecipe(recipe)}
+                                >
                                     👁 View Recipe
                                 </button>
 
@@ -335,9 +356,6 @@ function UploadRecipe() {
                     )}
 
                 </div>
-                {/* <button className="publish-btn">
-          📤 Continue
-        </button> */}
 
             </div>
 

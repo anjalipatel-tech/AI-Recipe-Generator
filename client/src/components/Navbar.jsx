@@ -1,4 +1,10 @@
 import { FaUtensils } from "react-icons/fa";
+import {
+  HiOutlineHome,
+  HiOutlineInformationCircle,
+  HiOutlinePhone,
+} from "react-icons/hi2";
+import { LuBookHeart } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
 function Navbar() {
@@ -6,41 +12,44 @@ function Navbar() {
     <nav className="navbar">
 
       {/* Logo */}
-      <div className="logo">
+      <Link to="/" className="logo">
         <FaUtensils />
         <span>RecipeAI</span>
-      </div>
+      </Link>
 
-      {/* Navigation Links */}
+      {/* Navigation */}
       <ul className="nav-links">
 
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">
+            <HiOutlineHome />
+            <span>Home</span>
+          </Link>
         </li>
 
         <li>
-          <a href="#upload">Upload</a>
+          <Link to="/myrecipes">
+            <LuBookHeart />
+            <span>My Recipes</span>
+          </Link>
         </li>
 
         <li>
-          <a href="#recipes">Recipes</a>
+          <Link to="/">
+            <HiOutlineInformationCircle />
+            <span>About</span>
+          </Link>
         </li>
 
         <li>
-          <Link to="/myrecipes">My Recipes</Link>
-        </li>
-
-        <li>
-          <a href="#about">About</a>
-        </li>
-
-        <li>
-          <a href="#contact">Contact</a>
+          <Link to="/">
+            <HiOutlinePhone />
+            <span>Contact</span>
+          </Link>
         </li>
 
       </ul>
 
-      {/* Login Button */}
       <button className="login-btn">
         Login
       </button>

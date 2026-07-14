@@ -1,0 +1,352 @@
+/* ===========================
+   POPULAR RECIPES
+=========================== */
+
+.popular-section{
+    width:90%;
+    max-width:1400px;
+    margin:110px auto;
+    text-align:center;
+}
+
+.popular-tag{
+    display:inline-block;
+    padding:8px 22px;
+    border-radius:40px;
+    background:#fff3ec;
+    color:#ff6b35;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+.popular-heading{
+    font-size:52px;
+    font-weight:800;
+    color:#222;
+    margin-bottom:15px;
+}
+
+.popular-description{
+    max-width:700px;
+    margin:auto;
+    color:#666;
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:65px;
+}
+
+.popular-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+
+    transition:all .5s ease;
+}
+@media (max-width:1200px){
+
+.popular-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media (max-width:700px){
+
+.popular-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+/* ===========================
+      CARD
+=========================== */
+
+.popular-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.45s;
+
+    position:relative;
+    animation:popularFade .5s ease;
+
+}
+@keyframes popularFade{
+
+0%{
+    opacity:0;
+    transform:translateX(40px);
+}
+
+100%{
+    opacity:1;
+    transform:translateX(0);
+}
+
+}
+
+.popular-card:hover{
+
+    transform:translateY(-15px);
+
+    box-shadow:0 25px 60px rgba(255,107,53,.28);
+
+}
+
+/* ===========================
+      IMAGE
+=========================== */
+
+.popular-image-box{
+
+    height:240px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.popular-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+
+}
+
+.popular-card:hover .popular-image{
+
+    transform:scale(1.12);
+
+}
+
+/* ===========================
+      RATING
+=========================== */
+
+.popular-rating{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    background:white;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-weight:700;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:#222;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+.popular-rating svg{
+
+    color:#ffc107;
+
+}
+
+/* ===========================
+      CONTENT
+=========================== */
+
+.popular-content{
+
+    padding:28px;
+
+}
+
+.popular-content h3{
+
+    font-size:27px;
+
+    color:#222;
+
+    margin-bottom:22px;
+
+}
+
+/* ===========================
+      INFO
+=========================== */
+
+.popular-info{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:28px;
+
+}
+
+.popular-info span{
+
+    background:#fff4ee;
+
+    color:#444;
+
+    padding:9px 16px;
+
+    border-radius:30px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.popular-info svg{
+
+    color:#ff6b35;
+
+}
+
+/* ===========================
+      BUTTON
+=========================== */
+
+.popular-btn{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:#ff6b35;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    transition:.35s;
+
+}
+
+.popular-btn:hover{
+
+    background:#ff4c0a;
+
+    letter-spacing:.6px;
+
+}
+
+.popular-btn svg{
+
+    transition:.35s;
+
+}
+
+.popular-btn:hover svg{
+
+    transform:translateX(6px);
+
+}
+
+/* ===========================
+      RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+.popular-heading{
+
+font-size:36px;
+
+}
+
+.popular-description{
+
+font-size:16px;
+
+}
+
+.popular-image-box{
+
+height:210px;
+
+}
+
+}
+
+.popular-slider-header{
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.popular-arrow{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:#ff6b35;
+    color:white;
+    font-size:22px;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 8px 20px rgba(255,107,53,.3);
+}
+
+.popular-arrow:hover{
+    transform:scale(1.1);
+    background:#ff4c0a;
+}
