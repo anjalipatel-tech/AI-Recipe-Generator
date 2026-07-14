@@ -86,12 +86,28 @@ color:#ff6b35;
   width: 50%;
 }
 
-.hero-content h1 {
-  font-size: 55px;
-  color: #2d2d2d;
-  margin-bottom: 20px;
-  line-height: 1.2;
+.hero-content h1{
+
+    font-size:3.4rem;
+
+    font-weight:800;
+
+    line-height:1.2;
+
+    color:#222;
+
+    letter-spacing:-1px;
+
+    margin-bottom:15px;
+
 }
+.hero-content h1 span{
+
+    color: #ff6b35;
+
+}
+
+
 
 .hero-content p {
   font-size: 20px;
@@ -134,10 +150,96 @@ color:#ff6b35;
   color: white;
 }
 
-.hero-image {
-  width: 40%;
-  font-size: 220px;
-  text-align: center;
+.hero-image{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-video{
+    width: 100%;
+    max-width: 520px;
+    height: 320px;
+
+    object-fit: contain;
+
+    border-radius: 20px;
+
+    transition: 0.4s ease;
+}
+
+.hero-video:hover{
+    transform: scale(1.03);
+}
+.hero-video-frame{
+
+    position: relative;
+
+    padding: 9px;
+
+    border: 2px dashed #ff8c5a;
+
+    border-radius: 32px;
+
+    background: #fff;
+
+    box-shadow: 0 18px 45px rgba(0,0,0,.12);
+
+    transition: .35s ease;
+
+}
+
+.hero-video-frame:hover{
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 25px 50px rgba(255,107,53,.22);
+
+}
+
+.hero-video{
+
+    display:block;
+
+    width:100%;
+
+    max-width:500px;
+
+    height:320px;
+
+    object-fit:cover;
+
+    border-radius:22px;
+
+}
+.hero-video-frame::before{
+
+    content:"✨";
+
+    position:absolute;
+
+    top:-18px;
+
+    left:-18px;
+
+    font-size:26px;
+
+}
+
+.hero-video-frame::after{
+
+    content:"♡";
+
+    position:absolute;
+
+    right:-15px;
+
+    top:-15px;
+
+    color:#ff6b35;
+
+    font-size:28px;
+
 }
 
 /* ================= UPLOAD SECTION ================= */
@@ -618,5 +720,93 @@ color:#ff6b35;
 .save-btn:hover{
 
     background:#e85b2d;
+
+}
+.hero-badge{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 22px;
+
+    background:#fff7f2;
+
+    border:2px solid #ffd7c8;
+
+    border-radius:50px;
+
+    color:#ff6b35;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    margin:28px 0;
+
+    box-shadow:0 8px 20px rgba(255,107,53,.12);
+
+    cursor:pointer;
+
+    transition:all .35s ease;
+
+    animation:badgeFloat 3s ease-in-out infinite;
+
+}
+.hero-badge:hover{
+
+    background:#ff6b35;
+
+    color:white;
+
+    transform:translateY(-4px) scale(1.04);
+
+    box-shadow:0 15px 35px rgba(255,107,53,.35);
+
+}
+@keyframes badgeFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+.badge-icon{
+
+    display:inline-block;
+
+    animation:badgeIcon 1.8s infinite;
+
+}
+
+@keyframes badgeIcon{
+
+    0%{
+        transform:rotate(0deg);
+    }
+
+    25%{
+        transform:rotate(-10deg);
+    }
+
+    50%{
+        transform:rotate(10deg);
+    }
+
+    75%{
+        transform:rotate(-10deg);
+    }
+
+    100%{
+        transform:rotate(0deg);
+    }
 
 }

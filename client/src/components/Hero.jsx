@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import heroVideo from "../assets/hero-video.mp4";
 
 function Hero() {
   const navigate = useNavigate();
@@ -21,9 +22,15 @@ function Hero() {
     <section className="hero">
       <div className="hero-content">
         <h1>
-          Turn Your Food Image <br />
-          Into a Delicious Recipe 🍲
-        </h1>
+  Turn Your <span>Food Image</span>
+  <br />
+  Into a Delicious Recipe
+</h1>
+
+<div className="hero-badge">
+    <span className="badge-icon">🍲</span>
+    AI Powered Recipe Generator
+</div>
 
         <p>
           Upload a food image and let AI generate the complete recipe
@@ -47,9 +54,23 @@ function Hero() {
         </div>
       </div>
 
-      <div className="hero-image">
-        🍕
-      </div>
+     <div className="hero-image">
+
+  <div className="hero-video-frame">
+
+    <video
+      className="hero-video"
+      autoPlay
+      loop
+      muted
+      playsInline
+    >
+      <source src={heroVideo} type="video/mp4" />
+    </video>
+
+  </div>
+
+</div>
     </section>
   );
 }
