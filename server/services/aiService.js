@@ -6,7 +6,7 @@ async function generateRecipe(base64Image) {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "google/gemini-2.0-flash-exp:free",
+        model: "google/gemini-2.5-flash",
 
         // IMPORTANT
         max_tokens: 1000,
@@ -46,7 +46,7 @@ Return ONLY valid JSON.
         headers: {
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "http://localhost:5173",
+          "HTTP-Referer": "https://ai-recipe-generator-gamma.vercel.app",
           "X-Title": "Recipe AI",
         },
       }
