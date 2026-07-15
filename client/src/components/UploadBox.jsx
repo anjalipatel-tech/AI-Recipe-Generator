@@ -45,9 +45,9 @@ function UploadBox() {
       );
 
       localStorage.setItem(
-        "recipeImage",
-        response.data.image
-      );
+  "recipeImage",
+  localStorage.getItem("uploadedImage")
+);
 
       navigate("/recipe");
 

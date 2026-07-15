@@ -10,17 +10,10 @@ const {
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
+// ✅ Railway Friendly
+const upload = multer({
+  storage: multer.memoryStorage(),
 });
-
-const upload = multer({ storage });
 
 // Generate Recipe
 router.post("/", upload.single("image"), getRecipe);

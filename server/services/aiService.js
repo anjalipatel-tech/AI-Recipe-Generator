@@ -6,7 +6,7 @@ async function generateRecipe(base64Image) {
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: "google/gemini-2.5-flash",
+        model: "google/gemini-2.0-flash-exp:free",
 
         // IMPORTANT
         max_tokens: 1000,

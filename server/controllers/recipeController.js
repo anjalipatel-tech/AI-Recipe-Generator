@@ -4,29 +4,24 @@ const generateRecipe = require("../services/aiService");
 
 const getRecipe = async (req, res) => {
   try {
-    const base64Image = fs
-      .readFileSync(req.file.path)
-      .toString("base64");
+    const base64Image = req.file.buffer.toString("base64");
 
     const result = await generateRecipe(base64Image);
 
     res.json({
-      success: true,
-      recipe: result,
+  success: true,
+  recipe: result,
+});
 
-      image:
-        "http://localhost:5000/uploads/" +
-        req.file.filename,
-    });
+  }catch (error) {
+  console.error("Recipe Error:", error);
 
-  } catch (error) {
-    console.log(error);
-
-    res.status(500).json({
-      success: false,
-      message: "Recipe Generation Failed",
-    });
-  }
+  res.status(500).json({
+    success: false,
+    message: error.message,
+    error: error.stack,
+  });
+}
 };
 
 const saveRecipe = async (req, res) => {
